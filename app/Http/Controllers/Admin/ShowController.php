@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Show;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Venue;
+use App\Models\Actor;
 
 class ShowController extends Controller
 {
@@ -18,16 +20,22 @@ class ShowController extends Controller
 
     public function create()
     {
-        return view('admin.shows.create');
+        $venues = Venue::all();
+        $actors = Actor::all();
+
+        return view('admin.shows.create', compact('venues', 'actors'));
     }
 
     public function store(Request $request)
     {
-        Show::create([
+        $show = Show::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'description' => $request->description,
+            'venue_id' => $request->venue_id,
         ]);
+
+        $show->actors()->attach($request->actors);
 
         return redirect('/admin/shows');
     }
