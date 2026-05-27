@@ -1,44 +1,50 @@
 <div class="max-w-5xl mx-auto p-6">
 
     <div class="flex items-center justify-between mb-6">
-        <h1 class="text-3xl font-bold">Shows</h1>
 
-        <a href="/admin/shows/create"
+        <h1 class="text-3xl font-bold">
+            Actors
+        </h1>
+
+        <a href="/admin/actors/create"
            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
-            + Create Show
+            + Create Actor
         </a>
+
     </div>
 
-    @if($shows->count() > 0)
+    @if(session('success'))
+        <div class="bg-green-100 text-green-700 px-4 py-3 rounded mb-6">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if($actors->count() > 0)
 
         <div class="grid gap-4">
 
-            @foreach($shows as $show)
+            @foreach($actors as $actor)
 
                 <div class="bg-white shadow rounded-xl p-5 border">
 
-                    <div class="flex items-start justify-between">
+                    <div class="flex items-center justify-between">
 
                         <div>
                             <h3 class="text-xl font-semibold">
-                                {{ $show->title }}
+                                {{ $actor->name }}
                             </h3>
-
-                            <p class="text-gray-600 mt-2">
-                                {{ Str::limit($show->description, 120) }}
-                            </p>
                         </div>
 
                         <div class="flex gap-2">
 
-                            <a href="/admin/shows/{{ $show->id }}/edit"
+                            <a href="/admin/actors/{{ $actor->id }}/edit"
                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
                                 Edit
                             </a>
 
-                            <form action="/admin/shows/{{ $show->id }}"
+                            <form action="/admin/actors/{{ $actor->id }}"
                                   method="POST"
-                                  onsubmit="return confirm('Delete this show?')">
+                                  onsubmit="return confirm('Delete this actor?')">
 
                                 @csrf
                                 @method('DELETE')
@@ -64,7 +70,7 @@
 
         <div class="bg-gray-100 rounded-xl p-10 text-center">
             <p class="text-gray-500 text-lg">
-                No shows created yet.
+                No actors created yet.
             </p>
         </div>
 
