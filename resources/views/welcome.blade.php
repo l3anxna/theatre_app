@@ -38,7 +38,7 @@
 
         @auth
 
-        <a href="/dashboard"
+        <a href="{{ route('dashboard') }}">
            class="px-6 py-2 rounded-full bg-[#C62828] hover:bg-[#e53935] transition">
             Dashboard
         </a>

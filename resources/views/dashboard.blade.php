@@ -143,7 +143,7 @@
 
 
 
-            <a href="#"
+            <a href="{{ route('shows.create') }}"
                class="bg-[#C62828] hover:bg-red-700
                rounded-2xl p-6 transition">
 
@@ -167,7 +167,7 @@
 
 
 
-            <a href="#"
+            <a href="{{ route('actors.create') }}"
                class="bg-[#16161d] border border-gray-800
                hover:border-[#D4AF37]
                rounded-2xl p-6 transition">
@@ -192,7 +192,7 @@
 
 
 
-            <a href="#"
+            <a href="{{ route('venues.create') }}"
                class="bg-[#16161d] border border-gray-800
                hover:border-[#D4AF37]
                rounded-2xl p-6 transition">

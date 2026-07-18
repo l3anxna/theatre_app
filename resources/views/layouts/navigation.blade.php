@@ -38,7 +38,7 @@
 
         </a>
 
-        <a href="#"
+        <a href="{{ route('shows.index') }}"
            class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-[#22222b] hover:text-white">
 
             <span>🎬</span>
@@ -46,7 +46,7 @@
 
         </a>
 
-        <a href="#"
+        <a href="{{ route('actors.index') }}"
            class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-[#22222b] hover:text-white">
 
             <span>👥</span>
@@ -54,7 +54,7 @@
 
         </a>
 
-        <a href="#"
+        <a href="{{ route('venues.index') }}"
            class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-[#22222b] hover:text-white">
 
             <span>🏛️</span>
@@ -62,7 +62,7 @@
 
         </a>
 
-        <a href="#"
+        <a href="{{ route('bookings.index') }}"
            class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-[#22222b] hover:text-white">
 
             <span>🎟️</span>
