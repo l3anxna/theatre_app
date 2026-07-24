@@ -14,11 +14,6 @@
                 All Venues
             </h2>
 
-            <a href="{{ route('venues.create') }}"
-               class="bg-[#C62828] hover:bg-red-700 px-5 py-3 rounded-xl transition">
-                + New Venue
-            </a>
-
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">

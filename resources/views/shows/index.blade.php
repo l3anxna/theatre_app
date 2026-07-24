@@ -14,10 +14,9 @@
                 Upcoming Shows
             </h2>
 
-            <a href="{{ route('shows.create') }}"
-               class="bg-[#C62828] hover:bg-red-700 px-5 py-3 rounded-xl transition">
-                + New Show
-            </a>
+            <span class="text-gray-400">
+                {{ $shows->count() }} show(s)
+            </span>
 
         </div>
 
