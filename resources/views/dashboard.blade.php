@@ -2,9 +2,7 @@
 
 <div class="min-h-screen bg-[#0b0b0f] text-white py-10">
 
-
 <div class="max-w-7xl mx-auto px-6">
-
 
     <!-- Header -->
 
@@ -20,14 +18,9 @@
 
     </div>
 
-
-
-
     <!-- Statistics -->
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-
 
         <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
 
@@ -49,10 +42,6 @@
 
         </div>
 
-
-
-
-
         <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
 
             <div class="text-4xl mb-4">
@@ -73,10 +62,6 @@
 
         </div>
 
-
-
-
-
         <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
 
             <div class="text-4xl mb-4">
@@ -96,10 +81,6 @@
             </p>
 
         </div>
-
-
-
-
 
         <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
 
@@ -123,13 +104,7 @@
 
 
     </div>
-
-
-
-
-
     <!-- Quick Actions -->
-
 
     <div class="mt-12">
 
@@ -140,8 +115,6 @@
 
 
         <div class="grid md:grid-cols-3 gap-6">
-
-
 
             <a href="{{ route('shows.create') }}"
                class="bg-[#C62828] hover:bg-red-700
@@ -163,10 +136,6 @@
 
             </a>
 
-
-
-
-
             <a href="{{ route('actors.create') }}"
                class="bg-[#16161d] border border-gray-800
                hover:border-[#D4AF37]
@@ -187,10 +156,6 @@
 
 
             </a>
-
-
-
-
 
             <a href="{{ route('venues.create') }}"
                class="bg-[#16161d] border border-gray-800

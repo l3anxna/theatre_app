@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VenueController;
 use App\Http\Controllers\ActorPageController;
 use App\Http\Controllers\ShowPageController;
 use App\Http\Controllers\VenuePageController;
+use App\Http\Controllers\BookingPageController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,12 @@ Route::get('/venues', [VenuePageController::class, 'index'])
 Route::get('/venues/{slug}', [VenuePageController::class, 'show'])
     ->name('venues.show');
 
+
+Route::get('/bookings', [BookingPageController::class, 'index'])
+    ->name('bookings.index');
+    
+Route::get('/bookings/{booking}', [BookingPageController::class, 'show'])
+    ->name('bookings.show');
 
 /*
 |--------------------------------------------------------------------------
