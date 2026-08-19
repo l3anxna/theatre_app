@@ -13,7 +13,10 @@ class ShowPageController extends Controller
             ->with('venue')
             ->withCount('reviews')
             ->withAvg('reviews', 'rating')
-            ->whereDate('end_date', '>=', today())
+            ->where(function ($query) {
+                $query->whereNull('end_date')
+                    ->orWhereDate('end_date', '>=', today());
+            })
             ->when($request->filled('q'), function ($query) use ($request) {
                 $term = '%' . $request->string('q')->trim() . '%';
 
@@ -23,6 +26,7 @@ class ShowPageController extends Controller
                         ->orWhereHas('actors', fn ($actor) => $actor->where('name', 'like', $term));
                 });
             })
+            ->orderByRaw('start_date is null')
             ->orderBy('start_date')
             ->paginate(12)
             ->withQueryString();

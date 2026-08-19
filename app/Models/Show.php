@@ -17,6 +17,14 @@ class Show extends Model
         'venue_id',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date',
+        ];
+    }
+
     public function venue()
     {
         return $this->belongsTo(Venue::class);
