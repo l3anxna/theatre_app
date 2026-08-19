@@ -29,4 +29,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function favoriteShows()
+    {
+        return $this->belongsToMany(Show::class, 'favorites')
+            ->withTimestamps();
+    }
 }

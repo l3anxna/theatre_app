@@ -8,6 +8,8 @@ use App\Http\Controllers\ActorPageController;
 use App\Http\Controllers\ShowPageController;
 use App\Http\Controllers\VenuePageController;
 use App\Http\Controllers\BookingPageController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReviewController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +50,22 @@ Route::get('/bookings', [BookingPageController::class, 'index'])
     
 Route::get('/bookings/{booking}', [BookingPageController::class, 'show'])
     ->name('bookings.show');
+
+/*
+|--------------------------------------------------------------------------
+| Login User
+|--------------------------------------------------------------------------
+*/
+Route::middleware('auth')->group(function () {
+    Route::post('/shows/{show:slug}/favorite', [FavoriteController::class, 'toggle'])
+        ->name('shows.favorite');
+
+    Route::post('/shows/{show:slug}/reviews', [ReviewController::class, 'store'])
+        ->name('shows.reviews.store');
+
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])
+        ->name('reviews.destroy');
+});
 
 /*
 |--------------------------------------------------------------------------

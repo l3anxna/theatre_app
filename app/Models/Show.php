@@ -17,6 +17,14 @@ class Show extends Model
         'venue_id',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date',
+        ];
+    }
+
     public function venue()
     {
         return $this->belongsTo(Venue::class);
@@ -32,5 +40,11 @@ class Show extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites')
+            ->withTimestamps();
     }
 }
