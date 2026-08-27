@@ -9,36 +9,36 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Theatre Manager</title>
+    <title>{{ $title ?? 'Stagebook Thailand' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
-<body class="bg-[#0b0b0f] text-white font-[Poppins]">
+<body class="bg-[#101114] text-white font-sans antialiased">
 
-<div class="flex min-h-screen">
+<div class="min-h-screen lg:flex">
 
     @include('layouts.navigation')
 
-    <div class="flex-1">
+    <div class="min-w-0 flex-1 pb-20 lg:pb-0">
 
-        <header class="h-20 bg-[#16161d] border-b border-gray-800 flex items-center justify-between px-10">
+        <header class="hidden h-20 border-b border-white/10 bg-[#17191f]/95 px-6 lg:flex lg:px-10">
 
             <div>
                 @isset($header)
                     {{ $header }}
                 @else
                     <h1 class="text-2xl font-semibold">
-                        Theatre Manager
+                        Stagebook Thailand
                     </h1>
                 @endisset
             </div>
 
-            <div class="text-gray-400">
-                {{ now()->format('l, d M Y') }}
+            <div class="text-sm text-gray-400">
+                {{ now()->translatedFormat('D, j M Y') }}
             </div>
 
             <div class="flex items-center gap-4">
@@ -51,7 +51,7 @@
 
         </header>
 
-        <main class="p-8">
+        <main class="px-4 py-6 sm:px-6 lg:p-8">
 
             {{ $slot }}
 
