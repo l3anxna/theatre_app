@@ -7,10 +7,10 @@
     </x-slot>
 
     <div class="mx-auto max-w-6xl">
-        <section class="mb-6 overflow-hidden rounded-2xl border border-fuchsia-300/40 bg-gradient-to-r from-[#4f24c7] via-[#b326a9] to-[#ef5b2a] px-5 py-4 shadow-lg shadow-fuchsia-950/25 sm:px-6 sm:py-5">
-            <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#fff0a8]">Plan your next night out</p>
-            <h2 class="mt-1 max-w-2xl text-2xl font-bold tracking-tight text-white sm:text-3xl">Find a production, then make it yours.</h2>
-            <p class="mt-2 max-w-2xl text-sm leading-6 text-white/95 sm:text-base">Explore productions, venues, and the people who make theatre happen. Save a show or log the performance you saw.</p>
+        <section class="mb-8 overflow-hidden rounded-3xl border border-[#e4bd58]/20 bg-gradient-to-br from-[#2a2020] via-[#1b1d24] to-[#17191f] p-6 sm:p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#e4bd58]">Plan your next night out</p>
+            <h2 class="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Find a production, then make it yours.</h2>
+            <p class="mt-3 max-w-xl text-gray-300">Explore productions, venues, and the people who make theatre happen. Save a show or log the performance you saw.</p>
         </section>
 
         <form method="GET" class="mb-8 rounded-2xl border border-white/10 bg-[#17191f] p-4" role="search">
