@@ -11,6 +11,20 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                stage: {
+                    page: '#161422',
+                    surface: '#211E33',
+                    elevated: '#2B2740',
+                    primary: '#5B21B6',
+                    secondary: '#A61B45',
+                    accent: '#E5B92F',
+                    teal: '#006D70',
+                    text: '#F7F5FF',
+                    body: '#CFC9DE',
+                    muted: '#A9A2BA',
+                },
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

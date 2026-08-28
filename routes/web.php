@@ -10,6 +10,7 @@ use App\Http\Controllers\VenuePageController;
 use App\Http\Controllers\BookingPageController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProfileController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -51,12 +52,18 @@ Route::get('/bookings', [BookingPageController::class, 'index'])
 Route::get('/bookings/{booking}', [BookingPageController::class, 'show'])
     ->name('bookings.show');
 
+Route::get('/u/{user}', [ProfileController::class, 'show'])
+    ->name('profiles.show');
+
 /*
 |--------------------------------------------------------------------------
 | Login User
 |--------------------------------------------------------------------------
 */
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/shows/{show:slug}/favorite', [FavoriteController::class, 'toggle'])
         ->name('shows.favorite');
 
