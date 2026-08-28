@@ -45,7 +45,7 @@
                 <button class="w-full bg-[#C62828] hover:bg-red-700 rounded-xl py-3 transition">Logout</button>
             </form>
         @else
-            <a href="{{ route('login') }}" class="block w-full rounded-xl bg-[#C62828] py-3 text-center font-medium hover:bg-red-700">Log in</a>
+            <p class="text-center text-sm text-gray-400">Log in from the header to save productions and write reviews.</p>
         @endauth
     </div>
 </aside>

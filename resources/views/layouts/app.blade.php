@@ -43,9 +43,9 @@
 
             <div class="flex items-center gap-4">
                 @auth
-                    <span class="text-gray-400">
-                        {{ Auth::user()->name }}
-                    </span>
+                    <a href="{{ route('profiles.show', Auth::user()) }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#f8d34e]">{{ Auth::user()->name }}</a>
+                @else
+                    <a href="{{ route('login') }}" class="inline-flex min-h-10 items-center rounded-lg bg-[#f05a32] px-4 text-sm font-bold text-white shadow-sm shadow-orange-950/30 transition hover:bg-[#d94822] focus:outline-none focus:ring-2 focus:ring-[#f8d34e] focus:ring-offset-2 focus:ring-offset-[#17191f]">Log in</a>
                 @endauth
             </div>
 
