@@ -2,13 +2,13 @@
     $isAdminArea = request()->routeIs('admin.*');
 @endphp
 
-<aside class="hidden min-h-screen w-72 flex-col border-r border-white/10 bg-stage-surface lg:flex">
+<aside class="hidden min-h-screen w-72 flex-col border-r border-white/10 bg-[#17191f] lg:flex">
     <div class="px-8 py-8 border-b border-gray-800">
         <a href="{{ $isAdminArea ? route('admin.dashboard') : route('home') }}" class="flex items-center gap-3">
-            <span class="grid h-11 w-11 place-items-center rounded-xl bg-stage-primary text-xl" aria-hidden="true">S</span>
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#c93d3d] text-xl" aria-hidden="true">S</span>
             <div>
                 <h1 class="text-white font-bold text-xl">Stagebook</h1>
-                <p class="text-stage-muted text-sm">{{ $isAdminArea ? 'Administration' : 'Live theatre, Thailand' }}</p>
+                <p class="text-gray-400 text-sm">{{ $isAdminArea ? 'Administration' : 'Live theatre, Thailand' }}</p>
             </div>
         </a>
     </div>
@@ -20,9 +20,9 @@
             <a href="{{ route('admin.actors.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.actors.*') ? 'bg-[#C62828] text-white' : 'text-gray-400 hover:bg-[#22222b] hover:text-white' }}"><span>👥</span><span>Manage actors</span></a>
             <a href="{{ route('admin.venues.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.venues.*') ? 'bg-[#C62828] text-white' : 'text-gray-400 hover:bg-[#22222b] hover:text-white' }}"><span>🏛️</span><span>Manage venues</span></a>
         @else
-            <a href="{{ route('shows.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('shows.*', 'home') ? 'bg-stage-primary text-stage-text' : 'text-stage-body hover:bg-stage-elevated hover:text-stage-text' }}"><span aria-hidden="true">✦</span><span>Discover</span></a>
-            <a href="{{ route('actors.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('actors.*') ? 'bg-stage-primary text-stage-text' : 'text-stage-body hover:bg-stage-elevated hover:text-stage-text' }}"><span aria-hidden="true">◎</span><span>People</span></a>
-            <a href="{{ route('venues.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('venues.*') ? 'bg-stage-primary text-stage-text' : 'text-stage-body hover:bg-stage-elevated hover:text-stage-text' }}"><span aria-hidden="true">⌖</span><span>Venues</span></a>
+            <a href="{{ route('shows.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('shows.*', 'home') ? 'bg-[#C62828] text-white' : 'text-gray-400 hover:bg-[#22222b] hover:text-white' }}"><span aria-hidden="true">✦</span><span>Discover</span></a>
+            <a href="{{ route('actors.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('actors.*') ? 'bg-[#C62828] text-white' : 'text-gray-400 hover:bg-[#22222b] hover:text-white' }}"><span aria-hidden="true">◎</span><span>People</span></a>
+            <a href="{{ route('venues.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('venues.*') ? 'bg-[#C62828] text-white' : 'text-gray-400 hover:bg-[#22222b] hover:text-white' }}"><span aria-hidden="true">⌖</span><span>Venues</span></a>
             @auth
                 <a href="{{ route('bookings.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('bookings.*') ? 'bg-[#C62828] text-white' : 'text-gray-400 hover:bg-[#22222b] hover:text-white' }}"><span>🎟️</span><span>My bookings</span></a>
             @endauth
@@ -51,7 +51,7 @@
 </aside>
 
 @unless ($isAdminArea)
-    <nav aria-label="Mobile navigation" class="fixed inset-x-0 bottom-0 z-40 flex h-16 items-center justify-around border-t border-white/10 bg-stage-surface/95 px-2 backdrop-blur lg:hidden">
+    <nav aria-label="Mobile navigation" class="fixed inset-x-0 bottom-0 z-40 flex h-16 items-center justify-around border-t border-white/10 bg-[#17191f]/95 px-2 backdrop-blur lg:hidden">
         <a href="{{ route('shows.index') }}" class="rounded-lg px-3 py-2 text-center text-xs {{ request()->routeIs('shows.*', 'home') ? 'text-white' : 'text-gray-400' }}"><span class="block text-base" aria-hidden="true">✦</span>Discover</a>
         <a href="{{ route('venues.index') }}" class="rounded-lg px-3 py-2 text-center text-xs {{ request()->routeIs('venues.*') ? 'text-white' : 'text-gray-400' }}"><span class="block text-base" aria-hidden="true">⌖</span>Venues</a>
         @auth
