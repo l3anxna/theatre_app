@@ -92,7 +92,7 @@
 
                         </div>
 
-                        <a href="{{ route('shows.show', $show) }}"
+                        <a href="{{ route('shows.show', $show->slug) }}"
                            class="bg-[#C62828] hover:bg-red-700 transition px-5 py-2 rounded-xl">
 
                             View

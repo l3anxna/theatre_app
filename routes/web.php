@@ -35,14 +35,14 @@ Route::get('/shows/{slug}', [ShowPageController::class, 'show'])
 Route::get('/actors', [ActorPageController::class, 'index'])
     ->name('actors.index');
 
-Route::get('/actors/{slug}', [ActorPageController::class, 'show'])
+Route::get('/actors/{actor:slug}', [ActorPageController::class, 'show'])
     ->name('actors.show');
 
 // Venues
 Route::get('/venues', [VenuePageController::class, 'index'])
     ->name('venues.index');
 
-Route::get('/venues/{slug}', [VenuePageController::class, 'show'])
+Route::get('/venues/{venue:slug}', [VenuePageController::class, 'show'])
     ->name('venues.show');
 
 
