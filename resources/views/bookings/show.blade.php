@@ -1,22 +1,22 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h1 class="text-3xl font-bold text-white">
+        <h1 class="text-3xl font-bold text-[#2D2926]">
             Booking Details
         </h1>
     </x-slot>
 
     <div class="max-w-4xl mx-auto">
 
-        <div class="bg-[#16161d] rounded-2xl border border-gray-800 overflow-hidden">
+        <div class="bg-[#FFFCF7] rounded-2xl border border-[#D8CEC1] overflow-hidden">
 
-            <div class="p-8 border-b border-gray-800">
+            <div class="p-8 border-b border-[#D8CEC1]">
 
-                <h2 class="text-3xl font-bold text-white">
+                <h2 class="text-3xl font-bold text-[#2D2926]">
                     {{ $booking->show->title }}
                 </h2>
 
-                <p class="text-gray-400 mt-2">
+                <p class="text-[#746D64] mt-2">
                     {{ $booking->show->venue->name }}
                 </p>
 
@@ -26,11 +26,11 @@
 
                 <div>
 
-                    <h3 class="text-xl font-semibold text-white mb-4">
+                    <h3 class="text-xl font-semibold text-[#2D2926] mb-4">
                         Customer
                     </h3>
 
-                    <div class="space-y-3 text-gray-300">
+                    <div class="space-y-3 text-[#554E47]">
 
                         <p>
                             <strong>Name:</strong>
@@ -48,11 +48,11 @@
 
                 <div>
 
-                    <h3 class="text-xl font-semibold text-white mb-4">
+                    <h3 class="text-xl font-semibold text-[#2D2926] mb-4">
                         Ticket Information
                     </h3>
 
-                    <div class="space-y-3 text-gray-300">
+                    <div class="space-y-3 text-[#554E47]">
 
                         <p>
                             <strong>Seat:</strong>
@@ -79,17 +79,17 @@
 
             </div>
 
-            <div class="border-t border-gray-800 p-8 flex justify-between">
+            <div class="border-t border-[#D8CEC1] p-8 flex justify-between">
 
                 <a href="{{ route('bookings.index') }}"
-                   class="text-gray-400 hover:text-white">
+                   class="text-[#746D64] hover:text-[#2D2926]">
 
                     ← Back to Bookings
 
                 </a>
 
                 <a href="{{ route('shows.show', $booking->show->slug) }}"
-                   class="bg-[#C62828] hover:bg-red-700 text-white px-5 py-3 rounded-xl">
+                   class="bg-[#A34A3E] hover:bg-red-700 text-white px-5 py-3 rounded-xl">
 
                     View Show
 

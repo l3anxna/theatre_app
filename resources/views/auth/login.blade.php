@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-<div class="min-h-screen bg-[#0b0b0f] flex items-center justify-center px-6">
+<div class="min-h-screen bg-[#F4F0EA] flex items-center justify-center px-6">
 
     <div class="w-full max-w-md">
 
@@ -13,11 +13,11 @@
                 🎭
             </div>
 
-            <h1 class="text-3xl font-bold text-white">
+            <h1 class="text-3xl font-bold text-[#2D2926]">
                 Theatre Manager
             </h1>
 
-            <p class="text-gray-400 mt-2">
+            <p class="text-[#746D64] mt-2">
                 Welcome back, sign in to continue
             </p>
 
@@ -27,12 +27,12 @@
 
         <!-- Login Card -->
 
-        <div class="bg-[#16161d] border border-gray-800
+        <div class="bg-[#FFFCF7] border border-[#D8CEC1]
                     rounded-3xl p-8 shadow-2xl">
 
 
-            <x-auth-session-status 
-                class="mb-4 text-gray-300" 
+            <x-auth-session-status
+                class="mb-4 text-[#554E47]"
                 :status="session('status')" />
 
 
@@ -47,7 +47,7 @@
 
                 <div>
 
-                    <label class="text-gray-300 text-sm">
+                    <label class="text-[#554E47] text-sm">
                         Email Address
                     </label>
 
@@ -55,11 +55,11 @@
                     <input
                         id="email"
                         class="mt-2 w-full rounded-xl
-                               bg-[#0b0b0f]
-                               border border-gray-700
-                               text-white
-                               focus:border-[#D4AF37]
-                               focus:ring-[#D4AF37]
+                               bg-[#F4F0EA]
+                               border border-[#CFC4B6]
+                               text-[#2D2926]
+                               focus:border-[#B7791F]
+                               focus:ring-[#B7791F]
                                p-3"
                         type="email"
                         name="email"
@@ -69,8 +69,8 @@
                     />
 
 
-                    <x-input-error 
-                        :messages="$errors->get('email')" 
+                    <x-input-error
+                        :messages="$errors->get('email')"
                         class="mt-2" />
 
                 </div>
@@ -84,7 +84,7 @@
                 <div class="mt-5">
 
 
-                    <label class="text-gray-300 text-sm">
+                    <label class="text-[#554E47] text-sm">
                         Password
                     </label>
 
@@ -92,11 +92,11 @@
                     <input
                         id="password"
                         class="mt-2 w-full rounded-xl
-                               bg-[#0b0b0f]
-                               border border-gray-700
-                               text-white
-                               focus:border-[#D4AF37]
-                               focus:ring-[#D4AF37]
+                               bg-[#F4F0EA]
+                               border border-[#CFC4B6]
+                               text-[#2D2926]
+                               focus:border-[#B7791F]
+                               focus:ring-[#B7791F]
                                p-3"
                         type="password"
                         name="password"
@@ -104,8 +104,8 @@
                     />
 
 
-                    <x-input-error 
-                        :messages="$errors->get('password')" 
+                    <x-input-error
+                        :messages="$errors->get('password')"
                         class="mt-2" />
 
 
@@ -125,14 +125,14 @@
                         type="checkbox"
                         name="remember"
                         class="rounded
-                               bg-[#0b0b0f]
-                               border-gray-600
-                               text-[#C62828]
-                               focus:ring-[#D4AF37]"
+                               bg-[#F4F0EA]
+                               border-[#CFC4B6]
+                               text-[#A34A3E]
+                               focus:ring-[#B7791F]"
                     >
 
 
-                    <span class="ml-2 text-sm text-gray-400">
+                    <span class="ml-2 text-sm text-[#746D64]">
                         Remember me
                     </span>
 
@@ -151,7 +151,7 @@
                     <button
                         type="submit"
                         class="w-full py-3 rounded-xl
-                               bg-[#C62828]
+                               bg-[#A34A3E]
                                hover:bg-red-700
                                transition
                                text-white
@@ -171,9 +171,9 @@
 
                 <div class="text-center mt-5">
 
-                    <a 
+                    <a
                     href="{{ route('password.request') }}"
-                    class="text-sm text-gray-400 hover:text-[#D4AF37]">
+                    class="text-sm text-[#746D64] hover:text-[#B7791F]">
 
                         Forgot password?
 
@@ -196,13 +196,13 @@
 
         @if(Route::has('register'))
 
-        <p class="text-center text-gray-400 mt-6">
+        <p class="text-center text-[#746D64] mt-6">
 
             Don't have an account?
 
-            <a 
+            <a
             href="{{route('register')}}"
-            class="text-[#D4AF37] hover:underline">
+            class="text-[#B7791F] hover:underline">
 
                 Register
 

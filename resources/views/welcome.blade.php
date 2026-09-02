@@ -39,14 +39,14 @@
         @auth
 
         <a href="{{ route('dashboard') }}">
-           class="px-6 py-2 rounded-full bg-[#C62828] hover:bg-[#e53935] transition">
+           class="px-6 py-2 rounded-full bg-[#A34A3E] hover:bg-[#A34A3E] transition">
             Dashboard
         </a>
 
         @else
 
         <a href="{{route('login')}}"
-           class="px-6 py-2 rounded-full border border-gray-500 hover:border-[#D4AF37] transition">
+           class="px-6 py-2 rounded-full border border-[#B8AC9E] hover:border-[#B7791F] transition">
             Login
         </a>
 
@@ -54,7 +54,7 @@
         @if(Route::has('register'))
 
         <a href="{{route('register')}}"
-           class="px-6 py-2 rounded-full bg-[#D4AF37] text-black hover:bg-yellow-400 transition">
+           class="px-6 py-2 rounded-full bg-[#B7791F] text-black hover:bg-yellow-400 transition">
             Register
         </a>
 
@@ -89,7 +89,7 @@
 
 Manage Your
 
-<span class="text-[#D4AF37]">
+<span class="text-[#B7791F]">
  Theatre
 </span>
 
@@ -99,7 +99,7 @@ Like Never Before
 
 
 
-<p class="mt-8 text-gray-400 text-lg max-w-2xl mx-auto">
+<p class="mt-8 text-[#746D64] text-lg max-w-2xl mx-auto">
 
 A modern platform to manage shows, actors, venues,
 and performances in one elegant system.
@@ -112,7 +112,7 @@ and performances in one elegant system.
 
 
 <a href="{{route('login')}}"
-class="px-10 py-4 rounded-full bg-[#C62828]
+class="px-10 py-4 rounded-full bg-[#A34A3E]
 hover:bg-red-700 transition text-lg font-medium">
 
 Get Started
@@ -120,9 +120,9 @@ Get Started
 </a>
 
 
-<a href="#features"
-class="px-10 py-4 rounded-full border border-gray-600
-hover:border-[#D4AF37] transition text-lg">
+<a href="#F4E2B6tures"
+class="px-10 py-4 rounded-full border border-[#CFC4B6]
+hover:border-[#B7791F] transition text-lg">
 
 Explore
 
@@ -136,7 +136,7 @@ Explore
 <div class="mt-20 grid md:grid-cols-3 gap-6">
 
 
-<div class="bg-[#16161d] p-8 rounded-2xl border border-gray-800">
+<div class="bg-[#FFFCF7] p-8 rounded-2xl border border-[#D8CEC1]">
 
 <div class="text-4xl mb-4">
 🎬
@@ -146,7 +146,7 @@ Explore
 Shows
 </h3>
 
-<p class="text-gray-400 mt-2">
+<p class="text-[#746D64] mt-2">
 Manage productions and schedules
 </p>
 
@@ -154,7 +154,7 @@ Manage productions and schedules
 
 
 
-<div class="bg-[#16161d] p-8 rounded-2xl border border-gray-800">
+<div class="bg-[#FFFCF7] p-8 rounded-2xl border border-[#D8CEC1]">
 
 <div class="text-4xl mb-4">
 👥
@@ -164,7 +164,7 @@ Manage productions and schedules
 Actors
 </h3>
 
-<p class="text-gray-400 mt-2">
+<p class="text-[#746D64] mt-2">
 Organize your performers
 </p>
 
@@ -172,7 +172,7 @@ Organize your performers
 
 
 
-<div class="bg-[#16161d] p-8 rounded-2xl border border-gray-800">
+<div class="bg-[#FFFCF7] p-8 rounded-2xl border border-[#D8CEC1]">
 
 <div class="text-4xl mb-4">
 🏛️
@@ -182,7 +182,7 @@ Organize your performers
 Venues
 </h3>
 
-<p class="text-gray-400 mt-2">
+<p class="text-[#746D64] mt-2">
 Control theatre locations
 </p>
 
