@@ -13,11 +13,9 @@ class VenuePageController extends Controller
         return view('venues.index', compact('venues'));
     }
 
-    public function show($slug)
+    public function show(Venue $venue)
     {
-        $venue = Venue::with('shows')
-            ->where('slug', $slug)
-            ->firstOrFail();
+        $venue->load('shows');
 
         return view('venues.show', compact('venue'));
     }

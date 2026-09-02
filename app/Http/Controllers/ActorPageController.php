@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Actor;
 
 class ActorPageController extends Controller
@@ -14,12 +13,10 @@ class ActorPageController extends Controller
         return view('actors.index', compact('actors'));
     }
 
-    public function show($slug)
+    public function show(Actor $actor)
     {
-        $actor = Actor::with('shows')
-            ->where('slug', $slug)
-            ->firstOrFail();
+        $actor->load('shows');
 
-        return view('actors.show',compact('actor'));
+        return view('actors.show', compact('actor'));
     }
 }
