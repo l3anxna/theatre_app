@@ -25,7 +25,7 @@
 
     <div class="min-w-0 flex-1 pb-20 lg:pb-0">
 
-        <header class="hidden h-20 border-b border-[#D8CEC1] bg-stage-surface/95 px-6 lg:flex lg:items-center lg:justify-between lg:px-10">
+        <header class="hidden h-20 border-b border-[#D8CEC1] bg-stage-surface/95 px-6 lg:flex lg:px-10">
 
             <div>
                 @isset($header)
