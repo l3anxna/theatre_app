@@ -9,49 +9,49 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Theatre Manager</title>
+    <title>{{ $title ?? 'Stagebook Thailand' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
-<body class="bg-[#0b0b0f] text-white font-[Poppins]">
+<body class="bg-stage-page text-stage-text font-sans antialiased">
 
-<div class="flex min-h-screen">
+<div class="min-h-screen lg:flex">
 
     @include('layouts.navigation')
 
-    <div class="flex-1">
+    <div class="min-w-0 flex-1 pb-20 lg:pb-0">
 
-        <header class="h-20 bg-[#16161d] border-b border-gray-800 flex items-center justify-between px-10">
+        <header class="hidden h-16 items-center justify-between border-b border-white/10 bg-stage-surface/95 px-6 lg:flex lg:px-8">
 
             <div>
                 @isset($header)
                     {{ $header }}
                 @else
                     <h1 class="text-2xl font-semibold">
-                        Theatre Manager
+                        Stagebook Thailand
                     </h1>
                 @endisset
             </div>
 
-            <div class="text-gray-400">
-                {{ now()->format('l, d M Y') }}
+            <div class="text-sm text-stage-muted">
+                {{ now()->translatedFormat('D, j M Y') }}
             </div>
 
             <div class="flex items-center gap-4">
                 @auth
-                    <span class="text-gray-400">
-                        {{ Auth::user()->name }}
-                    </span>
+                    <a href="{{ route('profiles.show', Auth::user()) }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-stage-text transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-stage-accent">{{ Auth::user()->name }}</a>
+                @else
+                    <a href="{{ route('login') }}" class="inline-flex min-h-10 items-center rounded-lg bg-stage-secondary px-4 text-sm font-bold text-stage-text shadow-sm shadow-black/25 transition hover:bg-[#8d163b] focus:outline-none focus:ring-2 focus:ring-stage-accent focus:ring-offset-2 focus:ring-offset-stage-surface">Log in</a>
                 @endauth
             </div>
 
         </header>
 
-        <main class="p-8">
+        <main class="px-4 py-6 sm:px-6 lg:p-8">
 
             {{ $slot }}
 

@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --stage-page: #161422;
+        --stage-surface: #211e33;
+        --stage-elevated: #2b2740;
+        --stage-primary: #5b21b6;
+        --stage-secondary: #a61b45;
+        --stage-accent: #e5b92f;
+        --stage-teal: #006d70;
+        --stage-text: #f7f5ff;
+        --stage-body: #cfc9de;
+        --stage-muted: #a9a2ba;
+    }
+
+    html {
+        background-color: var(--stage-page);
+    }
+
+    body {
+        min-height: 100vh;
+        background-color: var(--stage-page);
+        color: var(--stage-text);
+    }
+
+    ::selection {
+        background-color: var(--stage-primary);
+        color: var(--stage-text);
+    }
+}

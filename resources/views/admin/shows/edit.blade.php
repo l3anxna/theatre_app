@@ -1,63 +1,12 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h1 class="text-2xl font-semibold text-white">Edit show</h1>
-    </x-slot>
-
-    <div class="mx-auto max-w-3xl">
-        <form action="{{ route('admin.shows.update', $show) }}" method="POST" class="space-y-6 rounded-2xl border border-gray-800 bg-[#16161d] p-6 text-white">
-            @csrf
-            @method('PUT')
-
-            <div>
-                <label for="title" class="mb-2 block font-medium">Title</label>
-                <input id="title" type="text" name="title" value="{{ old('title', $show->title) }}" required class="w-full rounded-lg border-gray-700 bg-gray-900 text-white">
-                @error('title')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror
-            </div>
-
-            <div>
-                <label for="description" class="mb-2 block font-medium">Description</label>
-                <textarea id="description" name="description" rows="5" required class="w-full rounded-lg border-gray-700 bg-gray-900 text-white">{{ old('description', $show->description) }}</textarea>
-                @error('description')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror
-            </div>
-
-            <div class="grid gap-6 md:grid-cols-2">
-                <div>
-                    <label for="start_date" class="mb-2 block font-medium">Start date</label>
-                    <input id="start_date" type="date" name="start_date" value="{{ old('start_date', $show->start_date?->format('Y-m-d')) }}" class="w-full rounded-lg border-gray-700 bg-gray-900 text-white">
-                </div>
-                <div>
-                    <label for="end_date" class="mb-2 block font-medium">End date</label>
-                    <input id="end_date" type="date" name="end_date" value="{{ old('end_date', $show->end_date?->format('Y-m-d')) }}" class="w-full rounded-lg border-gray-700 bg-gray-900 text-white">
-                    @error('end_date')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror
-                </div>
-            </div>
-
-            <div>
-                <label for="venue_id" class="mb-2 block font-medium">Venue</label>
-                <select id="venue_id" name="venue_id" class="w-full rounded-lg border-gray-700 bg-gray-900 text-white">
-                    <option value="">Choose a venue</option>
-                    @foreach ($venues as $venue)
-                        <option value="{{ $venue->id }}" @selected(old('venue_id', $show->venue_id) == $venue->id)>{{ $venue->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <fieldset>
-                <legend class="mb-3 font-medium">Cast</legend>
-                <div class="grid gap-3 sm:grid-cols-2">
-                    @foreach ($actors as $actor)
-                        <label class="flex cursor-pointer items-center gap-3 rounded-lg border border-gray-700 p-3 hover:border-yellow-500">
-                            <input type="checkbox" name="actors[]" value="{{ $actor->id }}" @checked(in_array($actor->id, old('actors', $show->actors->pluck('id')->all())))>
-                            <span>{{ $actor->name }}</span>
-                        </label>
-                    @endforeach
-                </div>
-            </fieldset>
-
-            <div class="flex justify-end gap-3">
-                <a href="{{ route('admin.shows.index') }}" class="rounded-lg bg-gray-700 px-5 py-3">Cancel</a>
-                <button type="submit" class="rounded-lg bg-yellow-500 px-6 py-3 font-semibold text-black">Update show</button>
-            </div>
+    <x-slot name="header"><div><p class="text-xs font-bold uppercase tracking-[0.16em] text-stage-accent">Productions</p><h1 class="mt-1 text-2xl font-bold text-stage-text">Edit production</h1></div></x-slot>
+    <div class="mx-auto max-w-4xl"><div class="mb-6"><a href="{{ route('admin.shows.index') }}" class="text-sm font-semibold text-stage-body hover:text-stage-accent">← Back to productions</a><p class="mt-3 text-stage-body">Update {{ $show->title }}’s details, run, and credits.</p></div>
+        <form action="{{ route('admin.shows.update', $show) }}" method="POST" class="space-y-8 rounded-2xl border border-white/10 bg-stage-surface p-5 sm:p-7">@csrf @method('PUT')
+            @if ($errors->any())<div class="rounded-xl border border-red-400/60 bg-red-950/30 p-4 text-red-100"><p class="font-semibold">Please fix the following:</p><ul class="mt-2 list-inside list-disc text-sm">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
+            <section><h2 class="text-lg font-bold text-stage-text">Production details</h2><div class="mt-5 space-y-5"><div><label for="title" class="mb-2 block font-semibold text-stage-text">Title</label><input id="title" type="text" name="title" value="{{ old('title', $show->title) }}" required autofocus class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text focus:border-stage-accent focus:ring-stage-accent"></div><div><label for="description" class="mb-2 block font-semibold text-stage-text">Description</label><textarea id="description" name="description" rows="5" required class="w-full rounded-xl border-gray-600 bg-stage-page text-stage-text focus:border-stage-accent focus:ring-stage-accent">{{ old('description', $show->description) }}</textarea></div></div></section>
+            <section class="border-t border-white/10 pt-7"><h2 class="text-lg font-bold text-stage-text">Run details</h2><div class="mt-5 grid gap-5 md:grid-cols-2"><div class="md:col-span-2"><label for="venue_id" class="mb-2 block font-semibold text-stage-text">Venue</label><select id="venue_id" name="venue_id" class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text focus:border-stage-accent focus:ring-stage-accent"><option value="">Choose a venue</option>@foreach ($venues as $venue)<option value="{{ $venue->id }}" @selected(old('venue_id', $show->venue_id) == $venue->id)>{{ $venue->name }}</option>@endforeach</select></div><div><label for="start_date" class="mb-2 block font-semibold text-stage-text">Start date</label><input id="start_date" type="date" name="start_date" value="{{ old('start_date', $show->start_date?->format('Y-m-d')) }}" class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text focus:border-stage-accent focus:ring-stage-accent"></div><div><label for="end_date" class="mb-2 block font-semibold text-stage-text">End date</label><input id="end_date" type="date" name="end_date" value="{{ old('end_date', $show->end_date?->format('Y-m-d')) }}" class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text focus:border-stage-accent focus:ring-stage-accent">@error('end_date')<p class="mt-2 text-sm text-red-200">{{ $message }}</p>@enderror</div></div></section>
+            <section class="border-t border-white/10 pt-7"><div class="flex flex-wrap items-baseline justify-between gap-2"><h2 class="text-lg font-bold text-stage-text">Cast</h2><p class="text-sm text-stage-muted">Select all credited performers.</p></div><fieldset class="mt-5"><legend class="sr-only">Cast members</legend><div class="grid gap-3 sm:grid-cols-2">@forelse ($actors as $actor)<label class="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-gray-600 bg-stage-page px-4 text-stage-body transition hover:border-stage-accent has-[:checked]:border-stage-accent has-[:checked]:bg-stage-elevated"><input type="checkbox" name="actors[]" value="{{ $actor->id }}" @checked(in_array($actor->id, old('actors', $show->actors->pluck('id')->all()))) class="rounded border-gray-500 bg-stage-page text-stage-primary focus:ring-stage-accent"><span>{{ $actor->name }}</span></label>@empty<p class="text-sm text-stage-muted">No actors have been created yet. Add actors before assigning the cast.</p>@endforelse</div></fieldset></section>
+            <div class="flex flex-col-reverse gap-3 border-t border-white/10 pt-6 sm:flex-row sm:justify-end"><a href="{{ route('admin.shows.index') }}" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 px-5 font-semibold text-stage-text hover:bg-stage-elevated">Cancel</a><button type="submit" class="min-h-11 rounded-xl bg-stage-primary px-5 font-semibold text-stage-text hover:bg-[#4b1a98] focus:outline-none focus:ring-2 focus:ring-stage-accent">Save changes</button></div>
         </form>
     </div>
 </x-app-layout>

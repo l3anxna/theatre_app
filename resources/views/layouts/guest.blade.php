@@ -36,7 +36,7 @@
 
 
 
-<body class="bg-[#0b0b0f] text-white antialiased">
+<body class="bg-stage-page text-stage-text antialiased">
 
 
 <div class="min-h-screen flex items-center justify-center px-6">
