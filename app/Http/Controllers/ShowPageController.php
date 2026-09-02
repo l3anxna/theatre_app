@@ -26,12 +26,19 @@ class ShowPageController extends Controller
                         ->orWhereHas('actors', fn ($actor) => $actor->where('name', 'like', $term));
                 });
             })
+            ->when($request->filled('genre'), fn ($query) => $query->where('genre', $request->string('genre')->trim()))
             ->orderByRaw('start_date is null')
             ->orderBy('start_date')
             ->paginate(12)
             ->withQueryString();
 
-        return view('shows.index', compact('shows'));
+        $genres = Show::query()
+            ->whereNotNull('genre')
+            ->distinct()
+            ->orderBy('genre')
+            ->pluck('genre');
+
+        return view('shows.index', compact('shows', 'genres'));
     }
 
     public function show(string $slug)

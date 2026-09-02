@@ -17,7 +17,7 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-[#0b0b0f] text-white">
+<body class="min-h-screen bg-stage-page text-stage-text">
 
 <header class="absolute top-0 left-0 w-full px-10 py-8 flex justify-between items-center">
 

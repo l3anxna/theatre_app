@@ -1,59 +1,13 @@
-<div class="max-w-3xl mx-auto p-6">
-
-    <div class="bg-white shadow rounded-2xl p-8">
-
-        <h1 class="text-3xl font-bold mb-6">
-            Create Venue
-        </h1>
-
-        @if ($errors->any())
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-
-                <ul class="list-disc list-inside">
-
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-
-                </ul>
-
-            </div>
-        @endif
-
-        <form action="/admin/venues" method="POST" class="space-y-6">
-
-            @csrf
-
-            <div>
-
-                <label class="block mb-2 font-medium">
-                    Venue Name
-                </label>
-
-                <input type="text"
-                       name="name"
-                       value="{{ old('name') }}"
-                       placeholder="Enter venue name"
-                       class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500">
-
-            </div>
-
-            <div class="flex justify-end gap-3">
-
-                <a href="/admin/venues"
-                   class="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-lg">
-                    Cancel
-                </a>
-
-                <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
-                    Save Venue
-                </button>
-
-            </div>
-
+<x-app-layout>
+    <x-slot name="header"><div><p class="text-xs font-bold uppercase tracking-[0.16em] text-stage-accent">Places</p><h1 class="mt-1 text-2xl font-bold text-stage-text">Add venue</h1></div></x-slot>
+    <div class="mx-auto max-w-3xl"><div class="mb-6"><a href="{{ route('admin.venues.index') }}" class="text-sm font-semibold text-stage-body hover:text-stage-accent">← Back to venues</a><p class="mt-3 text-stage-body">Add the practical details theatre-goers need before they attend.</p></div>
+        <form action="{{ route('admin.venues.store') }}" method="POST" class="space-y-6 rounded-2xl border border-white/10 bg-stage-surface p-5 sm:p-7">@csrf
+            @if ($errors->any())<div class="rounded-xl border border-red-400/60 bg-red-950/30 p-4 text-red-100"><p class="font-semibold">Please fix the following:</p><ul class="mt-2 list-inside list-disc text-sm">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
+            <div><label for="name" class="mb-2 block font-semibold text-stage-text">Venue name</label><input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder="e.g. M Theatre" class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text placeholder:text-stage-muted focus:border-stage-accent focus:ring-stage-accent"></div>
+            <div><label for="address" class="mb-2 block font-semibold text-stage-text">Address</label><input id="address" type="text" name="address" value="{{ old('address') }}" required placeholder="District, city, and street address" class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text placeholder:text-stage-muted focus:border-stage-accent focus:ring-stage-accent"></div>
+            <div><label for="google_map_link" class="mb-2 block font-semibold text-stage-text">Google Maps link <span class="font-normal text-stage-muted">(optional)</span></label><input id="google_map_link" type="url" name="google_map_link" value="{{ old('google_map_link') }}" placeholder="https://maps.google.com/..." class="min-h-11 w-full rounded-xl border-gray-600 bg-stage-page text-stage-text placeholder:text-stage-muted focus:border-stage-accent focus:ring-stage-accent"></div>
+            <div><label for="description" class="mb-2 block font-semibold text-stage-text">About this venue <span class="font-normal text-stage-muted">(optional)</span></label><textarea id="description" name="description" rows="5" class="w-full rounded-xl border-gray-600 bg-stage-page text-stage-text placeholder:text-stage-muted focus:border-stage-accent focus:ring-stage-accent" placeholder="Access, location, and audience information.">{{ old('description') }}</textarea></div>
+            <div class="flex flex-col-reverse gap-3 border-t border-white/10 pt-6 sm:flex-row sm:justify-end"><a href="{{ route('admin.venues.index') }}" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/20 px-5 font-semibold text-stage-text hover:bg-stage-elevated">Cancel</a><button type="submit" class="min-h-11 rounded-xl bg-stage-primary px-5 font-semibold text-stage-text hover:bg-[#4b1a98] focus:outline-none focus:ring-2 focus:ring-stage-accent">Save venue</button></div>
         </form>
-
     </div>
-
-</div>
+</x-app-layout>
