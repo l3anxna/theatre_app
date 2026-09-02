@@ -1,6 +1,6 @@
 <x-app-layout>
 
-<div class="min-h-screen bg-[#0b0b0f] text-white py-10">
+<div class="min-h-screen bg-[#F4F0EA] text-[#2D2926] py-10">
 
 <div class="max-w-7xl mx-auto px-6">
 
@@ -12,7 +12,7 @@
             Welcome back, {{ Auth::user()->name }} 👋
         </h1>
 
-        <p class="text-gray-400 mt-2">
+        <p class="text-[#746D64] mt-2">
             Manage your theatre operations from one place.
         </p>
 
@@ -22,13 +22,13 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
+        <div class="bg-[#FFFCF7] rounded-3xl p-6 border border-[#D8CEC1]">
 
             <div class="text-4xl mb-4">
                 🎭
             </div>
 
-            <h3 class="text-gray-400">
+            <h3 class="text-[#746D64]">
                 Shows
             </h3>
 
@@ -42,13 +42,13 @@
 
         </div>
 
-        <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
+        <div class="bg-[#FFFCF7] rounded-3xl p-6 border border-[#D8CEC1]">
 
             <div class="text-4xl mb-4">
                 👥
             </div>
 
-            <h3 class="text-gray-400">
+            <h3 class="text-[#746D64]">
                 Actors
             </h3>
 
@@ -56,19 +56,19 @@
                 128
             </p>
 
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-sm text-[#746D64] mt-2">
                 Registered artists
             </p>
 
         </div>
 
-        <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
+        <div class="bg-[#FFFCF7] rounded-3xl p-6 border border-[#D8CEC1]">
 
             <div class="text-4xl mb-4">
                 🏛️
             </div>
 
-            <h3 class="text-gray-400">
+            <h3 class="text-[#746D64]">
                 Venues
             </h3>
 
@@ -76,19 +76,19 @@
                 6
             </p>
 
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-sm text-[#746D64] mt-2">
                 Available locations
             </p>
 
         </div>
 
-        <div class="bg-[#16161d] rounded-3xl p-6 border border-gray-800">
+        <div class="bg-[#FFFCF7] rounded-3xl p-6 border border-[#D8CEC1]">
 
             <div class="text-4xl mb-4">
                 🎟️
             </div>
 
-            <h3 class="text-gray-400">
+            <h3 class="text-[#746D64]">
                 Bookings
             </h3>
 
@@ -117,7 +117,7 @@
         <div class="grid md:grid-cols-3 gap-6">
 
             <a href="{{ route('shows.create') }}"
-               class="bg-[#C62828] hover:bg-red-700
+               class="bg-[#A34A3E] hover:bg-red-700
                rounded-2xl p-6 transition">
 
 
@@ -137,8 +137,8 @@
             </a>
 
             <a href="{{ route('actors.create') }}"
-               class="bg-[#16161d] border border-gray-800
-               hover:border-[#D4AF37]
+               class="bg-[#FFFCF7] border border-[#D8CEC1]
+               hover:border-[#B7791F]
                rounded-2xl p-6 transition">
 
 
@@ -150,7 +150,7 @@
                     Add Actor
                 </h3>
 
-                <p class="text-gray-400 mt-2">
+                <p class="text-[#746D64] mt-2">
                     Register new performers
                 </p>
 
@@ -158,8 +158,8 @@
             </a>
 
             <a href="{{ route('venues.create') }}"
-               class="bg-[#16161d] border border-gray-800
-               hover:border-[#D4AF37]
+               class="bg-[#FFFCF7] border border-[#D8CEC1]
+               hover:border-[#B7791F]
                rounded-2xl p-6 transition">
 
 
@@ -171,7 +171,7 @@
                     Manage Venues
                 </h3>
 
-                <p class="text-gray-400 mt-2">
+                <p class="text-[#746D64] mt-2">
                     Update theatre locations
                 </p>
 
@@ -200,7 +200,7 @@
 
 
 
-        <div class="bg-[#16161d] border border-gray-800 rounded-3xl overflow-hidden">
+        <div class="bg-[#FFFCF7] border border-[#D8CEC1] rounded-3xl overflow-hidden">
 
 
             @foreach([
@@ -211,7 +211,7 @@
 
 
             <div class="flex justify-between items-center
-                        p-6 border-b border-gray-800">
+                        p-6 border-b border-[#D8CEC1]">
 
 
                 <div>
@@ -220,14 +220,14 @@
                         {{ $show[0] }}
                     </h3>
 
-                    <p class="text-gray-400">
+                    <p class="text-[#746D64]">
                         {{ $show[1] }}
                     </p>
 
                 </div>
 
 
-                <span class="text-[#D4AF37]">
+                <span class="text-[#B7791F]">
                     {{ $show[2] }}
                 </span>
 

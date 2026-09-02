@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h1 class="text-3xl font-bold text-white">
+        <h1 class="text-3xl font-bold text-[#2D2926]">
             🏛 Venues
         </h1>
     </x-slot>
@@ -21,7 +21,7 @@
             @forelse($venues as $venue)
 
                 <a href="{{ route('venues.show', $venue) }}"
-                   class="bg-[#16161d] border border-gray-800 rounded-2xl p-6 hover:border-[#D4AF37]">
+                   class="bg-[#FFFCF7] border border-[#D8CEC1] rounded-2xl p-6 hover:border-[#B7791F]">
 
                     <div class="text-4xl mb-4">
                         🏛️
@@ -31,11 +31,11 @@
                         {{ $venue->name }}
                     </h2>
 
-                    <p class="text-gray-400 mt-2">
+                    <p class="text-[#746D64] mt-2">
                         📍 {{ $venue->address }}
                     </p>
 
-                    <p class="mt-4 text-gray-500">
+                    <p class="mt-4 text-[#746D64]">
                         {{ $venue->shows->count() }} shows
                     </p>
 
@@ -43,7 +43,7 @@
 
             @empty
 
-                <div class="col-span-2 bg-[#16161d] rounded-2xl p-10 text-center">
+                <div class="col-span-2 bg-[#FFFCF7] rounded-2xl p-10 text-center">
 
                     No venues available
 

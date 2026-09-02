@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="bg-[#101114] text-white font-sans antialiased">
+<body class="bg-stage-page text-stage-text font-sans antialiased">
 
 <div class="min-h-screen lg:flex">
 
@@ -25,7 +25,7 @@
 
     <div class="min-w-0 flex-1 pb-20 lg:pb-0">
 
-        <header class="hidden h-20 border-b border-white/10 bg-[#17191f]/95 px-6 lg:flex lg:px-10">
+        <header class="hidden h-20 border-b border-[#D8CEC1] bg-stage-surface/95 px-6 lg:flex lg:items-center lg:justify-between lg:px-10">
 
             <div>
                 @isset($header)
@@ -37,15 +37,15 @@
                 @endisset
             </div>
 
-            <div class="text-sm text-gray-400">
+            <div class="text-sm text-stage-muted">
                 {{ now()->translatedFormat('D, j M Y') }}
             </div>
 
             <div class="flex items-center gap-4">
                 @auth
-                    <a href="{{ route('profiles.show', Auth::user()) }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#f8d34e]">{{ Auth::user()->name }}</a>
+                    <a href="{{ route('profiles.show', Auth::user()) }}" class="rounded-lg px-3 py-2 text-sm font-semibold text-[#2D2926] transition hover:bg-stage-elevated focus:outline-none focus:ring-2 focus:ring-[#B7791F]">{{ Auth::user()->name }}</a>
                 @else
-                    <a href="{{ route('login') }}" class="inline-flex min-h-10 items-center rounded-lg bg-[#f05a32] px-4 text-sm font-bold text-white shadow-sm shadow-orange-950/30 transition hover:bg-[#d94822] focus:outline-none focus:ring-2 focus:ring-[#f8d34e] focus:ring-offset-2 focus:ring-offset-[#17191f]">Log in</a>
+                    <a href="{{ route('login') }}" class="inline-flex min-h-10 items-center rounded-lg bg-[#A34A3E] px-4 text-sm font-bold text-white shadow-sm shadow-orange-950/30 transition hover:bg-[#8A3B32] focus:outline-none focus:ring-2 focus:ring-[#B7791F] focus:ring-offset-2 focus:ring-offset-stage-surface">Log in</a>
                 @endauth
             </div>
 
