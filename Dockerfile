@@ -24,6 +24,9 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     default-mysql-client \
+    nginx \
+    supervisor \
+    gettext-base \
     && docker-php-ext-install \
         pdo_mysql \
         zip \
@@ -40,8 +43,14 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 COPY --from=frontend /var/www/public/build ./public/build
 
-RUN chown -R www-data:www-data storage bootstrap/cache
+COPY docker/nginx-render.conf.template /etc/nginx/templates/default.conf.template
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/start-container /usr/local/bin/start-container
 
-EXPOSE 9000
+RUN chmod +x /usr/local/bin/start-container \
+    && rm -f /etc/nginx/sites-enabled/default \
+    && chown -R www-data:www-data storage bootstrap/cache
 
-CMD ["php-fpm"]
+EXPOSE 8080
+
+CMD ["start-container"]
