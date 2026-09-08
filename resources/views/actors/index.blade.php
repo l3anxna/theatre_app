@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h1 class="text-3xl font-bold text-white">
+        <h1 class="text-3xl font-bold text-[#2D2926]">
             👥 Actors
         </h1>
     </x-slot>
@@ -21,9 +21,9 @@
             @forelse($actors as $actor)
 
                 <a href="{{ route('actors.show', $actor) }}"
-                   class="bg-[#16161d] border border-gray-800 rounded-2xl p-6 text-center hover:border-[#D4AF37]">
+                   class="bg-[#FFFCF7] border border-[#D8CEC1] rounded-2xl p-6 text-center hover:border-[#B7791F]">
 
-                    <div class="w-20 h-20 rounded-full bg-[#C62828] flex items-center justify-center mx-auto text-3xl">
+                    <div class="w-20 h-20 rounded-full bg-[#A34A3E] flex items-center justify-center mx-auto text-3xl">
 
                         👤
 
@@ -37,7 +37,7 @@
 
                     @if($actor->role)
 
-                        <p class="text-gray-400 mt-2">
+                        <p class="text-[#746D64] mt-2">
 
                             {{ $actor->role }}
 
@@ -49,7 +49,7 @@
 
             @empty
 
-                <div class="col-span-3 bg-[#16161d] rounded-2xl p-10 text-center">
+                <div class="col-span-3 bg-[#FFFCF7] rounded-2xl p-10 text-center">
 
                     No actors found
 

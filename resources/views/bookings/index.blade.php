@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h1 class="text-3xl font-bold text-white">
+        <h1 class="text-3xl font-bold text-[#2D2926]">
             My Bookings
         </h1>
     </x-slot>
@@ -10,18 +10,18 @@
 
         @if($bookings->isEmpty())
 
-            <div class="bg-[#16161d] rounded-2xl p-12 text-center">
+            <div class="bg-[#FFFCF7] rounded-2xl p-12 text-center">
 
-                <h2 class="text-2xl font-semibold text-white mb-2">
+                <h2 class="text-2xl font-semibold text-[#2D2926] mb-2">
                     No Bookings Yet
                 </h2>
 
-                <p class="text-gray-400 mb-8">
+                <p class="text-[#746D64] mb-8">
                     You haven't booked any theatre shows.
                 </p>
 
                 <a href="{{ route('shows.index') }}"
-                   class="inline-block bg-[#C62828] hover:bg-red-700 text-white px-6 py-3 rounded-xl transition">
+                   class="inline-block bg-[#A34A3E] hover:bg-red-700 text-white px-6 py-3 rounded-xl transition">
 
                     Browse Shows
 
@@ -36,17 +36,17 @@
                 @foreach($bookings as $booking)
 
                     <a href="{{ route('bookings.show', $booking->id) }}"
-                       class="bg-[#16161d] rounded-2xl p-6 border border-gray-800 hover:border-[#C62828] transition">
+                       class="bg-[#FFFCF7] rounded-2xl p-6 border border-[#D8CEC1] hover:border-[#A34A3E] transition">
 
                         <div class="flex justify-between items-start">
 
                             <div>
 
-                                <h2 class="text-xl font-bold text-white">
+                                <h2 class="text-xl font-bold text-[#2D2926]">
                                     {{ $booking->show->title }}
                                 </h2>
 
-                                <p class="text-gray-400 mt-1">
+                                <p class="text-[#746D64] mt-1">
                                     {{ $booking->show->venue->name }}
                                 </p>
 
@@ -58,7 +58,7 @@
 
                         </div>
 
-                        <div class="mt-6 space-y-2 text-gray-300">
+                        <div class="mt-6 space-y-2 text-[#554E47]">
 
                             <p>
                                 🎫 {{ $booking->tickets }} Ticket(s)

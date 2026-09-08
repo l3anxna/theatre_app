@@ -4,21 +4,20 @@
 
 @layer base {
     :root {
-        --stage-page: #161422;
-        --stage-surface: #211e33;
-        --stage-elevated: #2b2740;
-        --stage-primary: #5b21b6;
-        --stage-secondary: #a61b45;
-        --stage-accent: #e5b92f;
-        --stage-teal: #006d70;
-        --stage-text: #f7f5ff;
-        --stage-body: #cfc9de;
-        --stage-muted: #a9a2ba;
+        /* Warm paper and ink prevent glare while keeping the interface inviting. */
+        --stage-page: #F4F0EA;
+        --stage-surface: #FFFCF7;
+        --stage-elevated: #EEE6DB;
+        --stage-primary: #A34A3E;
+        --stage-secondary: #7E3D55;
+        --stage-accent: #B7791F;
+        --stage-teal: #2F6F6B;
+        --stage-text: #2D2926;
+        --stage-body: #554E47;
+        --stage-muted: #746D64;
     }
 
-    html {
-        background-color: var(--stage-page);
-    }
+    html { background-color: var(--stage-page); }
 
     body {
         min-height: 100vh;
@@ -28,6 +27,6 @@
 
     ::selection {
         background-color: var(--stage-primary);
-        color: var(--stage-text);
+        color: #fff;
     }
 }
