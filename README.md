@@ -30,16 +30,23 @@ when it is run locally), so Render can detect and route HTTP traffic to the app.
 1. In Render, create a **Web Service** from this repository and select the Docker
    runtime. Do not set a custom start command; the image start command configures
    the HTTP server.
-2. Add the production environment variables in Render, including `APP_KEY`,
-   `APP_URL`, and the `DB_*` credentials. Keep secrets out of Git.
-3. Set Render's **Pre-Deploy Command** to:
-
-   ```bash
-   php artisan migrate --force
-   ```
-
-4. Deploy. Render should detect an HTTP listener on its assigned `PORT` rather
+2. Add `APP_URL` and, for a persistent production database, `APP_KEY`,
+   `DB_CONNECTION=mysql`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`,
+   and `DB_PASSWORD`. Keep secrets out of Git. The container generates a
+   temporary key and uses its bundled SQLite database when these are absent so
+   a new web service can start successfully, but that fallback is ephemeral and
+   must not be used for production data.
+3. Deploy. The container applies outstanding migrations during startup, and
+   Render should detect an HTTP listener on its assigned `PORT` rather
    than the PHP-FPM port (`9000`), which is only used internally by Nginx.
+
+### TiDB Cloud
+
+TiDB Cloud Serverless requires encrypted MySQL connections. For a TiDB host
+ending in `.tidbcloud.com`, the container automatically uses its system CA
+bundle through Laravel's `MYSQL_ATTR_SSL_CA` setting. If your provider gives
+you a custom CA certificate, mount it into the container and set
+`MYSQL_ATTR_SSL_CA` to that file instead.
 
 ## Learning Laravel
 
