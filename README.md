@@ -40,6 +40,14 @@ when it is run locally), so Render can detect and route HTTP traffic to the app.
    Render should detect an HTTP listener on its assigned `PORT` rather
    than the PHP-FPM port (`9000`), which is only used internally by Nginx.
 
+### TiDB Cloud
+
+TiDB Cloud Serverless requires encrypted MySQL connections. For a TiDB host
+ending in `.tidbcloud.com`, the container automatically uses its system CA
+bundle through Laravel's `MYSQL_ATTR_SSL_CA` setting. If your provider gives
+you a custom CA certificate, mount it into the container and set
+`MYSQL_ATTR_SSL_CA` to that file instead.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

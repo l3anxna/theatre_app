@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     zip \
     curl \
+    ca-certificates \
     libzip-dev \
     libpng-dev \
     libonig-dev \
