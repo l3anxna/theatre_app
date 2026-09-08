@@ -31,6 +31,12 @@ Route::get('/shows', [ShowPageController::class, 'index'])
 Route::get('/shows/{slug}', [ShowPageController::class, 'show'])
     ->name('shows.show');
 
+Route::get('/shows/{show:slug}/book', [BookingPageController::class, 'create'])
+    ->name('bookings.create');
+
+Route::post('/shows/{show:slug}/book', [BookingPageController::class, 'store'])
+    ->name('bookings.store');
+
 // Actors
 Route::get('/actors', [ActorPageController::class, 'index'])
     ->name('actors.index');

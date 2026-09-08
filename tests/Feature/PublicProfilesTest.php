@@ -39,5 +39,5 @@ test('an upcoming show page includes a booking call to action', function () {
 
     $response->assertOk()
         ->assertSee('Book tickets')
-        ->assertSee(route('bookings.index'), escape: false);
+        ->assertSee(route('bookings.create', $show), escape: false);
 });

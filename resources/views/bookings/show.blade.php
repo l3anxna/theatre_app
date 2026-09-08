@@ -1,5 +1,9 @@
 <x-app-layout>
 
+    @if (session('status'))
+        <div class="mx-auto mb-6 max-w-4xl rounded-xl border border-green-500/30 bg-green-900/30 p-4 text-green-100" role="status" aria-live="polite">{{ session('status') }}</div>
+    @endif
+
     <x-slot name="header">
         <h1 class="text-3xl font-bold text-[#2D2926]">
             Booking Details
@@ -68,9 +72,14 @@
                             <strong>Status:</strong>
 
                             <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">
-                                Confirmed
+                                {{ $booking->payment_status === 'paid' ? 'Confirmed' : ucfirst($booking->payment_status) }}
                             </span>
 
+                        </p>
+
+                        <p>
+                            <strong>Payment reference:</strong>
+                            {{ $booking->payment_reference }}
                         </p>
 
                     </div>

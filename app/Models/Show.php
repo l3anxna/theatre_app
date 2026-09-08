@@ -42,6 +42,11 @@ class Show extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
     public function favoritedBy()
     {
         return $this->belongsToMany(User::class, 'favorites')
