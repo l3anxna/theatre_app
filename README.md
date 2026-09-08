@@ -21,6 +21,26 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Render deployment
+
+This repository's production Docker image runs Nginx and PHP-FPM in one container.
+Nginx listens on the `PORT` environment variable supplied by Render (or port `8080`
+when it is run locally), so Render can detect and route HTTP traffic to the app.
+
+1. In Render, create a **Web Service** from this repository and select the Docker
+   runtime. Do not set a custom start command; the image start command configures
+   the HTTP server.
+2. Add the production environment variables in Render, including `APP_KEY`,
+   `APP_URL`, and the `DB_*` credentials. Keep secrets out of Git.
+3. Set Render's **Pre-Deploy Command** to:
+
+   ```bash
+   php artisan migrate --force
+   ```
+
+4. Deploy. Render should detect an HTTP listener on its assigned `PORT` rather
+   than the PHP-FPM port (`9000`), which is only used internally by Nginx.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
