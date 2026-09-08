@@ -53,6 +53,7 @@ RUN test -f public/build/manifest.json \
 COPY docker/nginx-render.conf.template /etc/nginx/templates/default.conf.template
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY docker/start-container /usr/local/bin/start-container
+COPY docker/php-fpm-render.conf /usr/local/etc/php-fpm.d/zz-render.conf
 
 RUN chmod +x /usr/local/bin/start-container \
     && rm -f /etc/nginx/sites-enabled/default \

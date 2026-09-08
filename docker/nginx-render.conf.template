@@ -5,6 +5,11 @@ server {
     root /var/www/public;
     index index.php;
 
+    # Render collects container stdout/stderr, not Nginx's default log files.
+    # Keep request and upstream errors visible in the Render Logs page.
+    access_log /dev/stdout;
+    error_log /dev/stderr warn;
+
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
