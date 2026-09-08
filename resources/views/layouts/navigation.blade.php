@@ -1,93 +1,64 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('admin.dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
+@php
+    $isAdminArea = request()->routeIs('admin.*');
+@endphp
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+<aside class="hidden min-h-screen w-72 flex-col border-r border-[#D8CEC1] bg-stage-surface lg:flex">
+    <div class="px-8 py-8 border-b border-[#D8CEC1]">
+        <a href="{{ $isAdminArea ? route('admin.dashboard') : route('home') }}" class="flex items-center gap-3">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#A34A3E] text-xl text-white" aria-hidden="true">S</span>
+            <div>
+                <h1 class="text-stage-text font-bold text-xl">Stagebook</h1>
+                <p class="text-stage-muted text-sm">{{ $isAdminArea ? 'Administration' : 'Live theatre, Thailand' }}</p>
             </div>
-
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                        @auth
-                            <div>{{ Auth::user()->name }}</div>
-                        @endauth
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <button type="submit" class="text-sm text-gray-700">
-                                Logout
-                            </button>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+        </a>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+    <nav class="flex-1 px-5 py-8 space-y-2">
+        @if ($isAdminArea)
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span>🏠</span><span>Dashboard</span></a>
+            <a href="{{ route('admin.shows.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.shows.*') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span>🎬</span><span>Manage shows</span></a>
+            <a href="{{ route('admin.actors.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.actors.*') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span>👥</span><span>Manage actors</span></a>
+            <a href="{{ route('admin.venues.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.venues.*') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span>🏛️</span><span>Manage venues</span></a>
+        @else
+            <a href="{{ route('shows.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('shows.*', 'home') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span aria-hidden="true">✦</span><span>Discover</span></a>
+            <a href="{{ route('actors.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('actors.*') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span aria-hidden="true">◎</span><span>People</span></a>
+            <a href="{{ route('venues.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('venues.*') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span aria-hidden="true">⌖</span><span>Venues</span></a>
+            @auth
+                <a href="{{ route('bookings.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('bookings.*') ? 'bg-[#A34A3E] text-white' : 'text-stage-muted hover:bg-stage-elevated hover:text-stage-text' }}"><span>🎟️</span><span>My bookings</span></a>
+            @endauth
+        @endif
+    </nav>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                @auth
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                @endauth
+    <div class="border-t border-[#D8CEC1] p-6">
+        @auth
+            <div class="mb-5">
+                <a href="{{ route('profiles.show', Auth::user()) }}" class="font-semibold text-stage-text hover:text-stage-accent">{{ Auth::user()->name }}</a>
+                <p class="text-stage-muted text-sm">{{ Auth::user()->email }}</p>
             </div>
 
-            <div class="mt-3 space-y-1">
+            @if (Auth::user()->role === 'admin' && ! $isAdminArea)
+                <a href="{{ route('admin.dashboard') }}" class="mb-3 block rounded-xl border border-[#A34A3E] px-4 py-3 text-center text-sm font-medium text-red-300 hover:bg-[#A34A3E] hover:text-white">Open admin dashboard</a>
+            @endif
 
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="w-full rounded-xl bg-[#A34A3E] py-3 text-white transition hover:bg-[#8A3B32]">Logout</button>
+            </form>
+        @else
+            <p class="text-center text-sm text-stage-muted">Log in from the header to save productions and write reviews.</p>
+        @endauth
     </div>
-</nav>
+</aside>
+
+@unless ($isAdminArea)
+    <nav aria-label="Mobile navigation" class="fixed inset-x-0 bottom-0 z-40 flex h-16 items-center justify-around border-t border-[#D8CEC1] bg-stage-surface/95 px-2 backdrop-blur lg:hidden">
+        <a href="{{ route('shows.index') }}" class="rounded-lg px-3 py-2 text-center text-xs {{ request()->routeIs('shows.*', 'home') ? 'text-[#2D2926]' : 'text-stage-muted' }}"><span class="block text-base" aria-hidden="true">✦</span>Discover</a>
+        <a href="{{ route('venues.index') }}" class="rounded-lg px-3 py-2 text-center text-xs {{ request()->routeIs('venues.*') ? 'text-[#2D2926]' : 'text-stage-muted' }}"><span class="block text-base" aria-hidden="true">⌖</span>Venues</a>
+        @auth
+            <a href="{{ route('bookings.index') }}" class="rounded-lg px-3 py-2 text-center text-xs {{ request()->routeIs('bookings.*') ? 'text-[#2D2926]' : 'text-stage-muted' }}"><span class="block text-base" aria-hidden="true">◫</span>Tickets</a>
+        @else
+            <a href="{{ route('login') }}" class="rounded-lg px-3 py-2 text-center text-xs text-stage-muted"><span class="block text-base" aria-hidden="true">◉</span>Log in</a>
+        @endauth
+        <a href="{{ route('actors.index') }}" class="rounded-lg px-3 py-2 text-center text-xs {{ request()->routeIs('actors.*') ? 'text-[#2D2926]' : 'text-stage-muted' }}"><span class="block text-base" aria-hidden="true">◎</span>People</a>
+    </nav>
+@endunless

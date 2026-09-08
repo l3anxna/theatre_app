@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,17 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
+    }
+
+    /** Display a member's public theatre profile. */
+    public function show(User $user): View
+    {
+        $user->load([
+            'reviews' => fn ($query) => $query->with('show')->latest(),
+            'favoriteShows' => fn ($query) => $query->with('venue')->latest(),
+        ]);
+
+        return view('profile.show', compact('user'));
     }
 
     /**

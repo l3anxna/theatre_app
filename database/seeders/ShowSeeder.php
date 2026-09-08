@@ -19,6 +19,8 @@ class ShowSeeder extends Seeder
             'slug' => 'romeo-and-juliet',
             'description' => 'Classic theatre show',
             'venue_id' => $mTheatre?->id,
+            'start_date' => today()->addDays(7),
+            'end_date' => today()->addDays(21),
         ]);
 
         Show::create([
@@ -26,6 +28,8 @@ class ShowSeeder extends Seeder
             'slug' => 'hamlet',
             'description' => 'Shakespeare tragedy',
             'venue_id' => $tcc?->id,
+            'start_date' => today()->addDays(30),
+            'end_date' => today()->addDays(44),
         ]);
     }
 }

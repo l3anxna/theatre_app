@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Venue;
 
 class VenuePageController extends Controller
 {
-    public function show($slug)
+    public function index()
     {
-        $venue = Venue::with('shows')
-            ->where('slug', $slug)
-            ->firstOrFail();
+        $venues = Venue::with('shows')->get();
 
-        return view(
-            'venues.show',
-            compact('venue')
-        );
+        return view('venues.index', compact('venues'));
+    }
+
+    public function show(Venue $venue)
+    {
+        $venue->load('shows');
+
+        return view('venues.show', compact('venue'));
     }
 }
