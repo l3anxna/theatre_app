@@ -3,6 +3,17 @@
 use Illuminate\Support\Str;
 use Pdo\Mysql;
 
+$mysqlSslCa = env('MYSQL_ATTR_SSL_CA', env('DB_SSL_CA'));
+
+if (($mysqlSslCa === null || $mysqlSslCa === '') && str_ends_with((string) env('DB_HOST', ''), '.tidbcloud.com')) {
+    $mysqlSslCa = '/etc/ssl/certs/ca-certificates.crt';
+}
+
+$mysqlOptions = extension_loaded('pdo_mysql') ? array_filter([
+    Mysql::ATTR_SSL_CA => $mysqlSslCa,
+    Mysql::ATTR_SSL_VERIFY_SERVER_CERT => $mysqlSslCa === null ? null : true,
+], static fn (mixed $value): bool => $value !== null && $value !== '') : [];
+
 return [
 
     /*
@@ -59,9 +70,7 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => $mysqlOptions,
         ],
 
         'mariadb' => [
@@ -79,9 +88,7 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => $mysqlOptions,
         ],
 
         'pgsql' => [

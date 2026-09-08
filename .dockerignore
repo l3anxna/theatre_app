@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+
+node_modules
+vendor
+
+# Development Vite files make @vite point at a local dev server instead of the
+# production manifest. The image builds and copies a fresh manifest below.
+public/hot
+public/build
+
+storage/logs
+storage/framework/cache/data
+storage/framework/sessions
+storage/framework/views
+
+.git
+.idea
+.vscode
+.codex
