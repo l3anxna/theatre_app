@@ -17,17 +17,6 @@ if [ -z "${DB_CONNECTION:-}" ]; then
     fi
 fi
 
-# TiDB Cloud Serverless rejects non-TLS MySQL connections. The system CA bundle
-# causes PDO's MySQL driver to negotiate TLS and validate TiDB's public
-# certificate. An explicit MYSQL_ATTR_SSL_CA value is left untouched so other
-# providers can supply their own CA file.
-case "${DB_HOST:-}" in
-    *.tidbcloud.com)
-        : "${MYSQL_ATTR_SSL_CA:=/etc/ssl/certs/ca-certificates.crt}"
-        export MYSQL_ATTR_SSL_CA
-        ;;
-esac
-
 # Laravel cannot serve requests without an encryption key. Prefer a stable
 # APP_KEY configured in Render; this fallback prevents a blank deployment from
 # responding with HTTP 500 while making the missing configuration visible.
