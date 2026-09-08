@@ -22,6 +22,7 @@
                     <p class="text-gray-300">◷ {{ $show->start_date ? $show->start_date->format('d M Y') : 'Dates TBA' }}@if ($show->end_date) – {{ $show->end_date->format('d M Y') }}@endif</p>
                 </div>
                 <div class="mt-7 flex flex-wrap gap-3">
+                    <a href="{{ route('bookings.index') }}" class="inline-flex min-h-11 items-center rounded-xl bg-[#e4bd58] px-4 font-semibold text-black transition hover:bg-[#f4d77f]">Book tickets</a>
                     @auth
                         <form method="POST" action="{{ route('shows.favorite', $show->slug) }}">@csrf
                             <button type="submit" class="min-h-11 rounded-xl border border-[#e4bd58]/60 px-4 font-semibold text-[#f4d77f] transition hover:bg-[#e4bd58] hover:text-black">{{ $show->is_favorited ? 'Saved to watchlist' : 'Save to watchlist' }}</button>

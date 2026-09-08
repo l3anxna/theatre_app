@@ -14,6 +14,11 @@ class Venue extends Model
         'description',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function shows()
     {
         return $this->hasMany(Show::class);

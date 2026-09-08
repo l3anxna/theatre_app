@@ -13,6 +13,11 @@ class Actor extends Model
         'profile_image',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function shows()
     {
         return $this->belongsToMany(Show::class)
