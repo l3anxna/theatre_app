@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y \
     gettext-base \
     && docker-php-ext-install \
         pdo_mysql \
+        pdo_sqlite \
         zip \
         mbstring \
         exif \
@@ -49,7 +50,8 @@ COPY docker/start-container /usr/local/bin/start-container
 
 RUN chmod +x /usr/local/bin/start-container \
     && rm -f /etc/nginx/sites-enabled/default \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && touch database/database.sqlite \
+    && chown -R www-data:www-data database storage bootstrap/cache
 
 EXPOSE 8080
 
