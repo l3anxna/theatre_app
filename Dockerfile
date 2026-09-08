@@ -10,6 +10,8 @@ COPY public ./public
 COPY tailwind.config.js postcss.config.js vite.config.js ./
 
 RUN npm run build
+RUN test -f public/build/manifest.json \
+    && test -n "$(find public/build/assets -name '*.css' -print -quit)"
 
 
 FROM php:8.5-fpm
@@ -45,6 +47,8 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 COPY --from=frontend /var/www/public/build ./public/build
+RUN test -f public/build/manifest.json \
+    && test -n "$(find public/build/assets -name '*.css' -print -quit)"
 
 COPY docker/nginx-render.conf.template /etc/nginx/templates/default.conf.template
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
