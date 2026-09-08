@@ -4,6 +4,18 @@ set -eu
 : "${PORT:=8080}"
 export PORT
 
+# These paths are used by Laravel for cached configuration, sessions, and
+# compiled Blade templates. They may be absent when a deployment is restored
+# from a filesystem without empty Git directories, so create them before
+# Artisan or PHP-FPM boot the application.
+mkdir -p \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
 # Render starts a web service before it has an .env file. Provide a working,
 # self-contained SQLite fallback unless the service was configured with a
 # database connection. A configured database is never replaced.
