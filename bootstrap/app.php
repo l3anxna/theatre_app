@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function ($middleware) {
+        // Render terminates TLS before forwarding the request to the container.
+        // Trust its forwarded protocol so Laravel generates HTTPS URLs for Vite
+        // assets instead of mixed-content HTTP URLs.
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
