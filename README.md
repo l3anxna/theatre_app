@@ -28,9 +28,15 @@ Nginx listens on the `PORT` environment variable supplied by Render (or port `80
 when it is run locally), so Render can detect and route HTTP traffic to the app.
 
 1. In Render, create a **Web Service** from this repository and select the Docker
-   runtime. Do not set a custom start command; the image start command configures
-   the HTTP server.
-2. Add `APP_URL` and, for a persistent production database, `APP_KEY`,
+   runtime (or create it from [`render.yaml`](render.yaml)). Do not override the
+   Docker build or start command: the Dockerfile runs `npm ci` and `npm run build`,
+   then copies the generated `public/build` Vite manifest and assets into the
+   production image. The image start command configures the HTTP server.
+2. Set `APP_URL` to the exact public HTTPS URL for the service, for example
+   `https://theatre-app.onrender.com`. Do not set `ASSET_URL` unless assets are
+   deliberately hosted on a separate HTTPS domain. An empty or HTTP `APP_URL` /
+   `ASSET_URL` makes browser requests for Vite assets mixed content and they will
+   be blocked on the HTTPS site. For a persistent production database, also set `APP_KEY`,
    `DB_CONNECTION=mysql`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`,
    and `DB_PASSWORD`. Keep secrets out of Git. The container generates a
    temporary key and uses its bundled SQLite database when these are absent so
@@ -39,6 +45,13 @@ when it is run locally), so Render can detect and route HTTP traffic to the app.
 3. Deploy. The container applies outstanding migrations during startup, and
    Render should detect an HTTP listener on its assigned `PORT` rather
    than the PHP-FPM port (`9000`), which is only used internally by Nginx.
+   Nginx's document root is `/var/www/public`, so `/build/assets/...` requests
+   resolve to the compiled Vite files rather than being routed through Laravel.
+
+After deployment, open the browser's Network tab and verify that the stylesheet
+requested from `/build/assets/*.css` returns `200` over HTTPS. If it does not,
+confirm the service is using the Docker runtime and has no dashboard build/start
+command overriding this repository configuration.
 
 ### TiDB Cloud
 
