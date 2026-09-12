@@ -42,7 +42,7 @@
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button class="w-full rounded-xl bg-[#A34A3E] py-3 text-white transition hover:bg-[#8A3B32]">Logout</button>
+                <button class="stage-button-primary w-full">Logout</button>
             </form>
         @else
             <p class="text-center text-sm text-stage-muted">Log in from the header to save productions and write reviews.</p>

@@ -21,7 +21,7 @@
                 </p>
 
                 <a href="{{ route('shows.index') }}"
-                   class="inline-block bg-[#A34A3E] hover:bg-red-700 text-white px-6 py-3 rounded-xl transition">
+                   class="stage-button-primary px-6">
 
                     Browse Shows
 

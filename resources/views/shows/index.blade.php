@@ -23,7 +23,7 @@
                         <option value="{{ $genre }}" @selected(request('genre') === $genre)>{{ $genre }}</option>
                     @endforeach
                 </select>
-                <button class="min-h-12 rounded-xl bg-[#A34A3E] px-5 font-semibold text-white transition hover:bg-[#8A3B32] focus:outline-none focus:ring-2 focus:ring-[#B7791F] focus:ring-offset-2 focus:ring-offset-[#FFFCF7]">Search</button>
+                <button class="stage-button-primary min-h-12 px-5 focus:ring-offset-[#FFFCF7]">Search</button>
             </div>
         </form>
 

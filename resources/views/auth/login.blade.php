@@ -150,13 +150,7 @@
 
                     <button
                         type="submit"
-                        class="w-full py-3 rounded-xl
-                               bg-[#A34A3E]
-                               hover:bg-red-700
-                               transition
-                               text-white
-                               font-semibold
-                               text-lg">
+                        class="stage-button-primary w-full text-lg">
 
                         Login
 

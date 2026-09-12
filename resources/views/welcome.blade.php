@@ -38,8 +38,8 @@
 
         @auth
 
-        <a href="{{ route('dashboard') }}">
-           class="px-6 py-2 rounded-full bg-[#A34A3E] hover:bg-[#A34A3E] transition">
+        <a href="{{ route('dashboard') }}"
+           class="stage-button-primary rounded-full px-6 py-2">
             Dashboard
         </a>
 
@@ -54,7 +54,7 @@
         @if(Route::has('register'))
 
         <a href="{{route('register')}}"
-           class="px-6 py-2 rounded-full bg-[#B7791F] text-black hover:bg-yellow-400 transition">
+           class="stage-button-primary rounded-full px-6 py-2">
             Register
         </a>
 
@@ -112,8 +112,7 @@ and performances in one elegant system.
 
 
 <a href="{{route('login')}}"
-class="px-10 py-4 rounded-full bg-[#A34A3E]
-hover:bg-red-700 transition text-lg font-medium">
+class="stage-button-primary rounded-full px-10 py-4 text-lg">
 
 Get Started
 
