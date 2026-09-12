@@ -49,7 +49,7 @@
                 </div>
             </section>
 
-            <button type="submit" class="mt-8 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-[#B7791F] px-5 font-semibold text-black transition hover:bg-[#D49A3A]">Pay &amp; confirm booking</button>
+            <button type="submit" class="stage-button-primary mt-8 min-h-11 w-full">Pay &amp; confirm booking</button>
         </form>
 
         <aside class="h-fit rounded-2xl border border-[#D8CEC1] bg-[#FFFCF7] p-6" aria-label="Booking summary">

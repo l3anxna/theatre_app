@@ -22,14 +22,14 @@
                     <p class="text-[#554E47]">◷ {{ $show->start_date ? $show->start_date->format('d M Y') : 'Dates TBA' }}@if ($show->end_date) – {{ $show->end_date->format('d M Y') }}@endif</p>
                 </div>
                 <div class="mt-7 flex flex-wrap gap-3">
-                    <a href="{{ route('bookings.create', $show) }}" class="inline-flex min-h-11 items-center rounded-xl bg-[#B7791F] px-4 font-semibold text-black transition hover:bg-[#D49A3A]">Book tickets</a>
+                        <a href="{{ route('bookings.create', $show) }}" class="stage-button-primary min-h-11 px-4">Book tickets</a>
                     @auth
                         <form method="POST" action="{{ route('shows.favorite', $show->slug) }}">@csrf
                             <button type="submit" class="min-h-11 rounded-xl border border-[#B7791F]/60 px-4 font-semibold text-[#D49A3A] transition hover:bg-[#B7791F] hover:text-black">{{ $show->is_favorited ? 'Saved to watchlist' : 'Save to watchlist' }}</button>
                         </form>
-                        <a href="#review" class="inline-flex min-h-11 items-center rounded-xl bg-[#A34A3E] px-4 font-semibold text-white hover:bg-[#8A3B32]">Log / review</a>
+                        <a href="#review" class="stage-button-primary min-h-11 px-4">Log / review</a>
                     @else
-                        <a href="{{ route('login') }}" class="inline-flex min-h-11 items-center rounded-xl bg-[#A34A3E] px-4 font-semibold text-white hover:bg-[#8A3B32]">Log in to log this show</a>
+                        <a href="{{ route('login') }}" class="stage-button-primary min-h-11 px-4">Log in to log this show</a>
                     @endauth
                 </div>
             </div>
@@ -44,7 +44,7 @@
             @auth
                 @php($myReview = $show->reviews->firstWhere('user_id', auth()->id()))
                 <form method="POST" action="{{ route('shows.reviews.store', $show->slug) }}" class="mt-5 rounded-2xl border border-[#D8CEC1] bg-[#FFFCF7] p-5">@csrf
-                    <div class="grid gap-5 sm:grid-cols-[180px_1fr]"><div><label for="rating" class="block font-medium">Your rating</label><select id="rating" name="rating" required class="mt-2 min-h-11 w-full rounded-xl border-[#CFC4B6] bg-[#F4F0EA] text-[#2D2926] focus:border-[#B7791F] focus:ring-[#B7791F]"><option value="">Choose rating</option>@for ($rating = 1; $rating <= 5; $rating++)<option value="{{ $rating }}" @selected(old('rating', $myReview?->rating) == $rating)>{{ $rating }} / 5</option>@endfor</select>@error('rating')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror</div><div><label for="comment" class="block font-medium">Your review <span class="font-normal text-[#746D64]">(optional)</span></label><textarea id="comment" name="comment" rows="4" maxlength="2000" class="mt-2 w-full rounded-xl border-[#CFC4B6] bg-[#F4F0EA] text-[#2D2926] focus:border-[#B7791F] focus:ring-[#B7791F]">{{ old('comment', $myReview?->comment) }}</textarea>@error('comment')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror</div></div><button type="submit" class="mt-4 min-h-11 rounded-xl bg-[#B7791F] px-5 font-semibold text-black hover:bg-[#D49A3A]">{{ $myReview ? 'Update review' : 'Post review' }}</button>
+                    <div class="grid gap-5 sm:grid-cols-[180px_1fr]"><div><label for="rating" class="block font-medium">Your rating</label><select id="rating" name="rating" required class="mt-2 min-h-11 w-full rounded-xl border-[#CFC4B6] bg-[#F4F0EA] text-[#2D2926] focus:border-[#B7791F] focus:ring-[#B7791F]"><option value="">Choose rating</option>@for ($rating = 1; $rating <= 5; $rating++)<option value="{{ $rating }}" @selected(old('rating', $myReview?->rating) == $rating)>{{ $rating }} / 5</option>@endfor</select>@error('rating')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror</div><div><label for="comment" class="block font-medium">Your review <span class="font-normal text-[#746D64]">(optional)</span></label><textarea id="comment" name="comment" rows="4" maxlength="2000" class="mt-2 w-full rounded-xl border-[#CFC4B6] bg-[#F4F0EA] text-[#2D2926] focus:border-[#B7791F] focus:ring-[#B7791F]">{{ old('comment', $myReview?->comment) }}</textarea>@error('comment')<p class="mt-2 text-sm text-red-400">{{ $message }}</p>@enderror</div></div><button type="submit" class="stage-button-primary mt-4 min-h-11">{{ $myReview ? 'Update review' : 'Post review' }}</button>
                 </form>
             @else <p class="mt-3 text-[#746D64]"><a href="{{ route('login') }}" class="font-medium text-[#B7791F] underline underline-offset-4">Log in</a> to rate or review this production.</p>@endauth
             <div class="mt-6 space-y-4">@forelse ($show->reviews as $review)<article class="rounded-2xl border border-[#D8CEC1] bg-[#FFFCF7] p-5"><div class="flex items-start justify-between gap-4"><div><p class="font-semibold text-[#2D2926]">{{ $review->user->name }}</p><p class="mt-1 text-sm text-[#746D64]">{{ $review->created_at->format('d M Y') }}</p></div><p class="font-semibold text-[#B7791F]">★ {{ $review->rating }}/5</p></div>@if ($review->comment)<p class="mt-4 leading-7 text-[#554E47]">{{ $review->comment }}</p>@endif</article>@empty<p class="text-[#746D64]">No reviews yet. Be the first to log this production.</p>@endforelse</div>

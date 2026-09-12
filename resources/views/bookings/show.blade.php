@@ -98,7 +98,7 @@
                 </a>
 
                 <a href="{{ route('shows.show', $booking->show->slug) }}"
-                   class="bg-[#A34A3E] hover:bg-red-700 text-white px-5 py-3 rounded-xl">
+                   class="stage-button-primary">
 
                     View Show
 
